@@ -38,7 +38,7 @@ const auth = (req,res,next)=>{
 }
 const admin = (req,res,next)=>{
     const {id_role} = req.headers
-    if(id_role == '1'|| id_role == '2'){
+    if(id_role == '1'){
         next()
     }else{
         res.send({success:false,msg:'Access Denied'})
@@ -47,11 +47,19 @@ const admin = (req,res,next)=>{
 
 const customer = (req,res,next)=>{
     const {id_role} = req.headers
-    if(id_role == '2'){
+    if(id_role == '1'|| id_role == '2'){
+        next()
+    }else{
+        res.send({success:false,msg:'Access Denied'})
+    }
+}
+const all = (req,res,next)=>{
+    const {id_role} = req.headers
+    if(id_role == '1'|| id_role == '2'){
         next()
     }else{
         res.send({success:false,msg:'Access Denied'})
     }
 }
 
-module.exports = {auth, admin, customer}
+module.exports = {auth, admin, customer, all}
