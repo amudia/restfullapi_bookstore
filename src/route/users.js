@@ -163,7 +163,7 @@ router.put('/admin/:id',upload.single('photo'),auth, (req,res)=>{
     })
 })
 
-router.put('/customer/:id',upload.single('photo'),(req,res)=>{
+router.put('/customer/:id',upload.single('photo'),auth, (req,res)=>{
     const {first_name, last_name, email, password} =req.body
     const {id} = req.params
     const photo = (req.file.filename)
@@ -185,7 +185,7 @@ router.put('/customer/:id',upload.single('photo'),(req,res)=>{
 })
 
 //DELETE
-router.delete('/:id',(req,res)=>{
+router.delete('/:id', auth, (req,res)=>{
     const {id} = req.params
     mysql.execute(delete_user,
         [id],(err,result,field)=>{
