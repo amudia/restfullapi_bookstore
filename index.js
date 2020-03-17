@@ -5,6 +5,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 
 const users = require('./src/route/users')
+const categories = require('./src/route/categories')
 
 const app = express()
 
@@ -13,6 +14,7 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use('/src/assets',express.static('src/assets/images'))
 app.use('/users',users)
+app.use('/categories',categories)
 
 app.post('/',(req,res)=>{
     res.send(req.body)
