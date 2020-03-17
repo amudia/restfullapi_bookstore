@@ -11,4 +11,4 @@ const config = {
 }
 
 const myconn = mysql.createConnection(config)
-module.exports = myconn 
+module.exports = myconn
